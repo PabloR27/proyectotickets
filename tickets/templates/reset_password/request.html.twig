@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restablecer su contraseña{% endblock %}
+
+{% block body %}
+    <style>
+        form{
+            max-width: 550px;
+            padding: 15px;
+        }
+        input{
+            width: 80%;
+        }
+        .centrarDiv{display: flex; justify-content: center; flex-direction: column; align-items: center;}
+        form{max-width: 400px;}
+    </style>
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <div class="centrarDiv">
+        <h1>Restablecer su contraseña</h1>
+
+        {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>
+                Introduce tu dirección de correo electrónico y te enviaremos un
+                enlace para restablecer su contraseña.
+            </small>
+        </div>
+
+        <button class="btn btn-primary">Enviar correo electrónico de restablecimiento de contraseña</button>
+        {{ form_end(requestForm) }}
+    </div>
+{% endblock %}

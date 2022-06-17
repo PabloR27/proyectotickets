@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}Restablecer su contraseña{% endblock %}
+
+{% block body %}
+    <style>
+        form{
+            max-width: 550px;
+            padding: 15px;
+        }
+        .centrarDiv{display: flex; justify-content: center; flex-direction: column; align-items: center;}
+        form{max-width: 400px;}
+    </style>
+    <div class="centrarDiv">
+        <h1>Restablecer su contraseña</h1>
+
+        {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Restablecer su contraseña</button>
+        {{ form_end(resetForm) }}
+    </div>
+{% endblock %}

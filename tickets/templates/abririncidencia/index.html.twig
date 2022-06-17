@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agregar Incidencia{% endblock %}
+
+{% block body %}
+    <style>
+        .Input{
+            margin: 0;
+        }
+    </style>
+    <div class="example-wrapper">
+        <div class="">
+            <form method="POST" action="{{path('pedido')}}">
+                <label>Activo:</label>
+                <select name="activo" id="activo">
+                    {% for item in activos%}    
+                        <option value="{{ item.id }}" {% if item.id == incidencia.id %} selected="selected" {% endif %}>{{ item.nombre }}</option>
+                    {% endfor%}
+                </select>
+                <!--<label for="activo">Activo:</label>
+                <input type="text" id="activo" name="activo" value=""/>
+                -->
+                <label>Gravedad:</label>
+                <select name="gravedad" id="gravedad">
+                    <option value="leve" {% if incidencia.gravedad == "leve" %} selected="selected" {% endif %}>leve</option>
+                    <option value="media" {% if incidencia.gravedad == "media" %} selected="selected" {% endif %}>media</option>
+                    <option value="critica" {% if incidencia.gravedad == "critica" %} selected="selected" {% endif %}>critica</option>
+                </select>
+                <div class="Input">
+                    <input type="text" id="titulo" name="titulo" value="{{ incidencia.titulo }}"/>
+                    <label for="titulo">Titulo:</label>
+                </div>
+                <label for="descripcion">Descripcion:</label>
+                <textarea type="text" id="descripcion" name="descripcion">{{ incidencia.descripcion }}</textarea>
+                <label>Tipo:</label>
+                <select name="tipo" id="tipo">
+                    <option value="software" {% if incidencia.tipo == "software" %} selected="selected" {% endif %}>Software</option>
+                    <option value="hardware" {% if incidencia.tipo == "hardware" %} selected="selected" {% endif %}>Hardware</option>
+                </select>
+                <label>Localizacion</label>
+                <select name="localizacion" id="localizacion">
+                    <option value="primeraplanta" {% if incidencia.localizacion == "primeraplanta" %} selected="selected" {% endif %}>Primera planta</option>
+                    <option value="segundaplanta" {% if incidencia.localizacion == "segundaplanta" %} selected="selected" {% endif %}>Segunda planta</option>
+                </select>
+                <input type="hidden" name="estado" value="Sin asignar">
+                <input type='submit' id='enviarIncidencia' name='enviarIncidencia' value='Agregar'/>
+            </form>
+        </div>
+    </div>
+<script src="{{ asset('js/comprobacionAgregarIncidencia.js') }}"></script>
+{% endblock %}

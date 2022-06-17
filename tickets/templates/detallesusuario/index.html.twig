@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalles usuario{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .centrarDiv{display: flex; justify-content: center; flex-direction: column; align-items: center;}
+        /*#imagenPerfil{max-width: 184px;}*/
+        #imagenPerfil{width: 130px; height: 130px; border-radius: 50%;margin-bottom: 20px;margin-top: 20px;}
+        form{max-width: 400px;}
+        #imagen{margin-top: 10px; margin-bottom: 15px;}
+    </style>
+    
+    <div class="centrarDiv">
+        <img id="imagenPerfil" src= {%if usuario.imageName != null %} "{{ vich_uploader_asset(usuario, 'imageFile') }}" {% else %} "/images/products/siluetaazul.png" {% endif %} alt="{{ usuario.imageName }}">
+        <form action="{{ path('cambiardatosusuario') }}" method="post">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" value="{{ usuario.usuario }}"/>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ usuario.email }}"/>
+            <!--
+            <label for="iamgen">Imagen de perfil:</label>
+            <input type="file" id="imagen" name="imagen"/>
+            -->
+            <a id="cambiarContrasena" href="{{path('app_forgot_password_request')}}">Cambiar contraseña</a>
+            <button type="submit">Cambiar datos</button>            
+        </form>
+    </div>
+<script src="{{ asset('js/comprobacionEditarUsuario.js') }}"></script>
+
+{% endblock %}

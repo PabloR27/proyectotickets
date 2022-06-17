@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agregar incidencia{% endblock %}
+
+{% block body %}
+    <style>
+        .Input{
+            margin: 0;
+        }
+    </style>
+    <div class="example-wrapper">
+        <div class="">
+            <form method="POST" action="{{path('pedido')}}">
+                <label>Activo:</label>
+                <select name="activo" id="activo">
+                    {% for item in activos%}    
+                        <option value="{{ item.id }}">{{ item.nombre }}</option>
+                    {% endfor%}
+                </select>
+                <!--<label for="activo">Activo:</label>
+                <input type="text" id="activo" name="activo" value=""/>
+                -->
+                <label>Gravedad:</label>
+                <select name="gravedad" id="gravedad">
+                    <option value="leve">leve</option>
+                    <option value="media">media</option>
+                    <option value="critica">critica</option>
+                </select>
+                <div class="Input">
+                    <input type="text" id="titulo" name="titulo"/>
+                    <label for="titulo">Titulo:</label>
+                </div>
+                <label for="descripcion">Descripcion:</label>
+                <textarea type="text" id="descripcion" name="descripcion"></textarea>
+                <label>Tipo:</label>
+                <select name="tipo" id="tipo">
+                    <option value="software">Software</option>
+                    <option value="hardware">Hardware</option>
+                </select>
+                <label>Localizacion</label>
+                <select name="localizacion" id="localizacion">
+                    <option value="primeraplanta">Primera planta</option>
+                    <option value="segundaplanta">Segunda planta</option>
+                </select>
+                <input type="hidden" name="estado" value="Sin asignar">
+                <input type='submit' id='enviarIncidencia' name='enviarIncidencia' value='Agregar'/>
+            </form>
+        </div>
+    </div>
+    <script src="{{ asset('js/comprobacionAgregarIncidencia.js') }}"></script>
+{% endblock %}

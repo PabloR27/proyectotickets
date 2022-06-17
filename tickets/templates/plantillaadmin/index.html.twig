@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper opcionesPrincipal">
+
+        <div class="opcionPrincipal col-md-6 col-xs-4" style="border: 3px solid #0d6efd;">
+            <a class="nav-link" href="{{path('altaincidencia')}}">
+
+                <h2>Agregar Incidencia</h2><br>
+                <div class="divImagenOpcionPrincipal">
+
+                    <img src="{{ asset('img/img-anadir-incidencia.png') }}" alt="Imagen sobre anadir incidencia"/>
+                </div>
+            </a>
+        </div>
+
+
+
+
+
+        <div class="opcionPrincipal col-md-6 col-xs-4" style="border: 3px solid #0d6efd;">
+            <a class="nav-link" href="{{path('confirmarfinalizacion')}}">
+
+                <div style="display: flex; justify-content: space-around;">
+                    <h2>Confirmar finalización</h2>
+                    <div class="notificacionConfirmacion"><p>{{incidenciasPorConfirmar}}</p></div>
+                </div>
+                <br>
+                <div class="divImagenOpcionPrincipal">
+
+                    <img src="{{ asset('img/img-confirmacion-incidencia.png') }}" alt="Imagen sobre anadir incidencia"/>
+                </div>
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

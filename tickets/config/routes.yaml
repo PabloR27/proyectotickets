@@ -1,0 +1,14 @@
+index:
+    path: /
+    controller: App\Controller\LoginController::index
+principal:
+    path: principal
+    controller: App\Controller\PrincipalController::index
+usuarios:
+    path: usuarios
+    controller: App\Controller\UsuariosController::index
+logout:
+    path: logout
+dashboard:
+    path: admin
+    controller: App\Controller\Admin\DashboardController::index

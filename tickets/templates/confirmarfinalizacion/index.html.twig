@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Incidencias por confirmar{% endblock %}
+
+{% block body %}
+    <style>
+        input{
+            width: auto;
+        }
+        form{
+            margin: 10px;
+        }
+    </style>
+    {% if incidencias != null %}
+        <div class="row">
+            {% for incidencia in incidencias %}
+                <div class="col-md-4 col-xs-2">
+                    <form action="{{path('confirmarrechazar', {'id':incidencia.id})}}" method="post">
+
+                        <a href="{{path('detalleincidencia', {'id':incidencia.id})}}">Incidencia Nº {{ incidencia.id }}</a><br>
+                        {{ incidencia.titulo }} <br>
+                        ¿Incidencia finalizada correctamente?
+                        <div>
+                            <input type="radio" id="si" name="finalizacion" value="Si"/><label for="si">Si</label><br>
+                        </div>
+                        <div>
+                            <input type="radio" id="no" name="finalizacion" value="No"/><label for="no">No</label><br>
+                        </div>
+                        <button type="submit">Aceptar</button>
+                    </form>
+                </div>
+            {% endfor%}
+        </div>
+    {% else %}
+        <div class="mensajeSinContenido">
+            <div>
+                <h2>No tiene incidencias por confirmar</h2>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

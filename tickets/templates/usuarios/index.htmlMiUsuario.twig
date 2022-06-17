@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios index{% endblock %}
+
+{% block body %}
+    <h1>Usuarios index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            
+        
+            <tr>
+                <td>{{ usuarios.usuario }}</td>
+                <td>{{ usuarios.email }}</td>
+                <td>
+                    <a href="{{ path('app_usuarios_show', {'id': usuarios.id}) }}">show</a>
+                    <a href="{{ path('app_usuarios_edit', {'id': usuarios.id}) }}">edit</a>
+                </td>
+            </tr>
+        
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,5 @@
+$(function () {
+    $('#tabla').tablesorter();
+});
+
+

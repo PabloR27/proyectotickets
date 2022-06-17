@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mis incidencias{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    {% if incidencias != null %}
+        <table>
+            <tr>
+                {% for incidencia in incidencias %}
+                    <td><a style="color: {% if incidencia.gravedad == "leve" %} green {% elseif incidencia.gravedad == "media" %} yellow {% else %} red {% endif %};" href="{{path('detalleincidencia', {'id':incidencia.id})}}">Incidencia Nº {{ incidencia.id }}</a><br></td>
+                    <td>{{ incidencia.titulo }}</td>
+                {% endfor%}
+            </tr>
+
+        </table>
+    {% else %}
+        <div class="mensajeSinContenido">
+            <div>
+                <h2>No tiene incidencias por asignar</h2>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

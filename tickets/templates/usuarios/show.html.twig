@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+    <h1>Usuarios</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Usuario</th>
+                <td>{{ usuario.usuario }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ usuario.roles ? usuario.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ usuario.password }}</td>
+            </tr>
+            <tr>
+                <th>IsVerified</th>
+                <td>{{ usuario.isVerified ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ usuario.email }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td>{{ usuario.imagen }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ usuario.imageName }}</td>
+            </tr>
+            <tr>
+                <th>ImageSize</th>
+                <td>{{ usuario.imageSize }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_usuarios_index') }}">back to list</a>
+
+    <a href="{{ path('app_usuarios_edit', {'id': usuario.id}) }}">edit</a>
+
+    {{ include('usuarios/_delete_form.html.twig') }}
+{% endblock %}
